@@ -1,0 +1,12 @@
+task:
+    Fronted:
+        ✔ creating navbar @done (12/24/2022, 3:12:53 PM)
+        ☐ creating auth
+        ☐ sidebar
+
+
+    Backend:
+        ☐ backend folder structure and jwt
+        ☐ ask question backend
+        ☐ home main bar api
+        ☐ post new answer
