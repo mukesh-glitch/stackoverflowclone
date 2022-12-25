@@ -6,7 +6,7 @@ import Avatar from '../components/Avatar'
 
 import '../style/component/Navbar.css'
 const Navbar = () => {
-    let user = null;
+    let user = 1;
     return (
         <div className="potion-nav">
             <nav>
