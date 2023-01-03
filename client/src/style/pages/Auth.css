@@ -59,6 +59,7 @@
   transition: 0.2s;
   font-size: 13px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .auth-btn:hover {

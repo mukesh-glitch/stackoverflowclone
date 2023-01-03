@@ -9,7 +9,7 @@ const Navbar = () => {
     let user = 1;
     return (
         <div className="potion-nav">
-            <nav>
+            <nav className='main-nav'>
                 <div className='navbar'>
                     <Link to='/' className='nav-item nav-logo'>
                         <img src={logo} alt="logo" />

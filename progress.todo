@@ -2,7 +2,9 @@ task:
     Fronted:
         ✔ creating navbar @done (12/24/2022, 3:12:53 PM)
         ✔ creating auth ui @done (12/25/2022, 6:18:07 PM)
-        ☐ sidebar
+        ✔ sidebar @done (1/2/2023, 5:02:30 PM)
+        ☐ home main bar
+        
 
 
     Backend:
