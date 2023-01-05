@@ -2,9 +2,9 @@ import React from 'react'
 import { Routes, Route } from "react-router-dom"
 import Home from './pages/Home'
 import Auth from './pages/Auth'
-import Questions from './pages/Questions'
+import Questions from './pages/Questions/Questions'
 import AskQuestion from './pages/AskQuestion'
-import DisplayQuestion from './pages/DisplayQuestion'
+import DisplayQuestion from './pages/Questions/DisplayQuestion'
 const Allroutes = () => {
     return (
         <Routes>

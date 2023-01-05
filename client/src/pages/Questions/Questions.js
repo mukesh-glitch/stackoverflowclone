@@ -1,8 +1,8 @@
 import React from 'react'
-import Leftsidebar from '../components/Leftsidebar/Leftsidebar'
-import Rightsidebar from '../components/Rightsidebar/Rightsidebar'
-import "../App.css"
-import HomeMainbar from '../components/homemainbar/HomeMainbar'
+import Leftsidebar from '../../components/Leftsidebar/Leftsidebar'
+import Rightsidebar from '../../components/Rightsidebar/Rightsidebar'
+import "../../App.css"
+import HomeMainbar from '../../components/homemainbar/HomeMainbar'
 const Questions = () => {
     return (
         <div className='home-container-1'>
