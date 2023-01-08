@@ -3,7 +3,10 @@ import Leftsidebar from '../components/Leftsidebar/Leftsidebar'
 import Rightsidebar from '../components/Rightsidebar/Rightsidebar'
 import "../App.css"
 import HomeMainbar from '../components/homemainbar/HomeMainbar'
+
 const Home = () => {
+
+
     return (
         <div className='home-container-1'>
             <Leftsidebar />

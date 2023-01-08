@@ -5,78 +5,19 @@ import Downvote from "../../assets/sort-down.svg"
 import "../../style/pages/Question.css"
 import Avatar from '../../components/Avatar'
 import DisplayAnswer from './DisplayAnswer'
+import { useSelector } from 'react-redux'
 
 const QuestionDetail = () => {
 
     const { id } = useParams();
-    let questionList = [
-        {
-            id: '1',
-            upVotes: 6,
-            downVotes: 5,
-            vote: 3,
-            noOfanswer: 2,
-            questionTitle: "What is function",
-            questionBody: "it meant to be",
-            questionTag: ["java", "python"],
-            userPosted: "mukesh",
-            askedOn: "jan 1",
-            answer: [{
-                answerBody: "answer from mukesh",
-                userAnswerd: "mukesh",
-                answeredOn: " jan 3",
-                userId: 2
-            }, {
-                answerBody: "answer from rounk",
-                userAnswerd: "rounak",
-                answeredOn: " jan 3",
-                userId: 2
-            }]
-        },
-        {
-            id: ' 3',
-            upVotes: 2,
-            downVotes: 3,
-            vote: 3,
-            noOfanswer: 2,
-            questionTitle: "What is function",
-            questionBody: "it meant to be",
-            questionTag: ["java", "python"],
-            userPosted: "mukesh",
-            askedOn: "jan 1",
-            answer: [{
-                answerBody: "answer",
-                userAnswerd: "mukesh",
-                answeredOn: " jan 3",
-                userId: 2
-            }]
-        },
-        {
-            id: '3',
-            upVotes: 2,
-            downVotes: 3,
-            vote: 3,
-            noOfanswer: 2,
-            questionTitle: "What is function",
-            questionBody: "it meant to be",
-            questionTag: ["java", "python"],
-            userPosted: "mukesh",
-            askedOn: "jan 1",
-            answer: [{
-                answerBody: "answer from mukesh",
-                userAnswerd: "mukesh",
-                answeredOn: " jan 3",
-                userId: 2
-            }]
-        }
-    ]
-
+    const questionList = useSelector(state => state.questionReducer)
+    console.log(questionList)
     return (
         <div className='quetion-details-page'>
             {
-                questionList === null ? <h1>Loading...</h1> :
-                    questionList.filter(quetions => quetions.id === id).map(question => (
-                        <div key={question.id}>
+                questionList.data === null ? <h1>Loading...</h1> :
+                    questionList.data.filter(questions => questions._id === id).map(question => (
+                        <div key={question._id}>
                             <section className="question-deatil-container" >
                                 <h1>{question.questionTitle}</h1>
                                 <div className='question-detail-container-2'>
@@ -89,7 +30,7 @@ const QuestionDetail = () => {
                                         <p className='quetion-body'>{question.questionBody}</p>
                                         <div className='question-detail-tags'>
                                             {
-                                                question.questionTag.map((tag) => (
+                                                question.questionTags.map((tag) => (
                                                     <p key={tag}>{tag}</p>
                                                 ))
                                             }
@@ -118,7 +59,7 @@ const QuestionDetail = () => {
                             {
                                 question.noOfanswer && (
                                     <section>
-                                        <h3> {question.noOfanswer} answer </h3>
+                                        <h3> {question.noOfAnswer} answer </h3>
                                         <DisplayAnswer question={question} />
                                     </section>
                                 )

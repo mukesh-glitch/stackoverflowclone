@@ -3,10 +3,20 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import search from '../assets/search-solid.svg'
 import Avatar from '../components/Avatar'
-
+import { useDispatch, useSelector } from 'react-redux'
 import '../style/component/Navbar.css'
+import { setCurrentUser } from '../actions/currentUser'
+import { useEffect } from 'react'
 const Navbar = () => {
-    let user = 1;
+    const dispatch = useDispatch()
+    let user = useSelector((state) => (state.currentUserReducer));
+    console.log(user)
+
+    useEffect(() => {
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+    }, [dispatch])
+
+
     return (
         <div className="potion-nav">
             <nav className='main-nav'>

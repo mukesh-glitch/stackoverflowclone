@@ -9,16 +9,16 @@ const Questions = ({ question }) => {
                 <p>Votes</p>
             </div>
             <div className='display-votes-ans'>
-                <p>{question.noOfanswer}</p>
+                <p>{question.noOfAnswer}</p>
                 <p>answer</p>
             </div>
             <div className='display-question-detail'>
-                <Link to={`/Questions/${question.id}`} className=' quetion-title-link'>{question.questionTitle}</Link>
+                <Link to={`/Questions/${question._id}`} className=' quetion-title-link'>{question.questionTitle}</Link>
                 <div className='display-tags-time'>
                     <div className='quetion-tags'>
                         {
-                            question.questionTag.map((tag) => (
-                                <p key={tag}> {tag} </p>
+                            question.questionTags.map((tag, index) => (
+                                <p key={index}> {tag} </p>
                             ))
                         }
 

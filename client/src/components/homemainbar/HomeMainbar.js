@@ -2,64 +2,11 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import QuestionList from './QuestionList'
 import '../../style/component/HomeMainbar.css'
+import { useSelector } from 'react-redux'
 const HomeMainbar = () => {
 
-    let questionList = [
-        {
-            id: 1,
-            upVotes: 2,
-            downVotes: 3,
-            vote: 3,
-            noOfanswer: 2,
-            questionTitle: "What is function",
-            questionBody: "it meant to be",
-            questionTag: ["java", "python"],
-            userPosted: "mukesh",
-            askedOn: "jan 1",
-            answer: [{
-                answerBody: "answer",
-                userAnswerd: "mukesh",
-                answeredOn: " jan 3",
-                userId: 2
-            }]
-        },
-        {
-            id: 1,
-            upVotes: 2,
-            downVotes: 3,
-            vote: 3,
-            noOfanswer: 2,
-            questionTitle: "What is function",
-            questionBody: "it meant to be",
-            questionTag: ["java", "python"],
-            userPosted: "mukesh",
-            askedOn: "jan 1",
-            answer: [{
-                answerBody: "answer",
-                userAnswerd: "mukesh",
-                answeredOn: " jan 3",
-                userId: 2
-            }]
-        },
-        {
-            id: 1,
-            upVotes: 2,
-            downVotes: 3,
-            vote: 3,
-            noOfanswer: 2,
-            questionTitle: "What is function",
-            questionBody: "it meant to be",
-            questionTag: ["java", "python"],
-            userPosted: "mukesh",
-            askedOn: "jan 1",
-            answer: [{
-                answerBody: "answer",
-                userAnswerd: "mukesh",
-                answeredOn: " jan 3",
-                userId: 2
-            }]
-        }
-    ]
+    let questionList = useSelector(state => state.questionReducer)
+    console.log({ homemainbar: questionList })
     const location = useLocation()
 
     return (
@@ -71,11 +18,11 @@ const HomeMainbar = () => {
                 <Link to='/AskQuestion' className="ask-btn"> Ask Question</Link>
             </div>
             <div>
-                {questionList === null ?
+                {questionList.data === null ?
                     <h1>Loading...</h1> :
                     <>
                         <p>{questionList.length} questions</p>
-                        <QuestionList questionList={questionList} />
+                        <QuestionList questionList={questionList.data} />
                     </>
                 }
             </div>
