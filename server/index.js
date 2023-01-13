@@ -3,6 +3,7 @@ import cors from 'cors'
 import mongoose from "mongoose"
 import user from './routes/user.js'
 import questionRoutes from './routes/question.js'
+import answerRoutes from './routes/Answer.js'
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 
 app.use('/', user)
 app.use('/question', questionRoutes)
+app.use('/Answer', answerRoutes)
 
 const PORT = process.env.PORT || 5000
 

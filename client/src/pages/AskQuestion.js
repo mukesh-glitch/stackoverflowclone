@@ -8,22 +8,10 @@ import { askQuestionAction } from '../actions/askQuestion';
 const AskQuestion = () => {
 
     const [questionInput, setQuestionInput] = useState({ questionTitle: " ", questionBody: "", questionTags: '' })
-
     const navigate = useNavigate();
     const dispatch = useDispatch()
-
     let user = useSelector((state) => (state.currentUserReducer));
 
-    useEffect(() => {
-        return user === null ? redirect : navigate('/AskQuestion')
-    }, [])
-
-
-    const redirect = () => {
-        navigate('/Auth')
-        alert("Login or signup to ask a question")
-
-    }
 
     const handleChange = (e) => {
         setQuestionInput({ ...questionInput, [e.target.name]: e.target.value })
@@ -32,7 +20,7 @@ const AskQuestion = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log(questionInput)
-        dispatch(askQuestionAction({ ...questionInput, userPosted: user.result.name }, navigate))
+        dispatch(askQuestionAction({ ...questionInput, userPosted: user.result.name, userId: user.result._id }, navigate))
 
     }
     const handleEnter = (e) => {

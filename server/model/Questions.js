@@ -46,7 +46,7 @@ const questionSchema = mongoose.Schema({
             userId: {
                 type: String
             },
-            anseredOn: {
+            answeredOn: {
                 type: Date,
                 default: Date.now
             }

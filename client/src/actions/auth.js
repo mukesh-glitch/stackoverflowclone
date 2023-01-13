@@ -16,8 +16,9 @@ export const signupAction = (authData, navigate) => async (dispatch) => {
 export const loginAction = (authData, navigate) => async (dispatch) => {
     try {
         const { data } = await api.login(authData)
-        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+
         dispatch({ type: 'AUTH', data })
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
         navigate('/')
     } catch (error) {
         console.log(error)
