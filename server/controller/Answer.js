@@ -6,12 +6,13 @@ export const postAnswer = async (req, res) => {
     const { id: _id } = req.params;
     const { noOfAnswer, answerBody, userAnswered, userId } = req.body;
 
+    // VALIDATING IS ID VALID OR NOT 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('Question unavailable...')
     }
 
 
-    updateNoOFQuestion(_id, noOfAnswer)
+    updateNoOFAnswer(_id, noOfAnswer)
     try {
         const updateQuestion = await questionDB.findByIdAndUpdate(_id, { $addToSet: { 'answer': [{ answerBody, userAnswered, userId }] } })
         res.status(200).json(updateQuestion)
@@ -22,7 +23,7 @@ export const postAnswer = async (req, res) => {
 }
 
 
-const updateNoOFQuestion = async (_id, noOfAnswer) => {
+const updateNoOFAnswer = async (_id, noOfAnswer) => {
     try {
         await questionDB.findByIdAndUpdate(_id, { $set: { 'noOfAnswer': noOfAnswer } })
     } catch (error) {
@@ -43,7 +44,7 @@ export const deleteAnswer = async (req, res) => {
         if (!mongoose.Types.ObjectId.isValid(answerId)) {
             return res.status(404).json('Answer unavailable...')
         }
-        updateNoOFQuestion(_id, noOfAnswer)
+        updateNoOFAnswer(_id, noOfAnswer)
 
         await questionDB.updateOne(
             { _id },

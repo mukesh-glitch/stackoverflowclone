@@ -11,6 +11,7 @@ API.interceptors.request.use((req) => {
   return req;
 })
 
+
 export const fetchAllUser = () => API.get('/user/getAllUsers')
 // AUTHENTICATION API
 export const login = (authData) => API.post('/user/login', authData);
@@ -26,3 +27,4 @@ export const deleteQuestion = (id) => API.delete(`/question/delete/${id}`)
 // ANWERS API
 export const postAnswer = (id, noOfAnswer, answerBody, userAnswered, userId) => API.patch(`/Answer/post/${id}`, { noOfAnswer, answerBody, userAnswered, userId })
 export const deleteAnswer = (id, answerId, noOfAnswer) => API.patch(`/Answer/delete/${id}`, { answerId, noOfAnswer })
+export const updateProfile = (id, updateData) => API.patch(`user/update/${id}`, updateData)

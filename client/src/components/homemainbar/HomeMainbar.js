@@ -23,7 +23,6 @@ const HomeMainbar = () => {
         }
     }
 
-    console.log({ homemainbar: questionList })
 
 
     return (

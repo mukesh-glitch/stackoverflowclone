@@ -39,12 +39,12 @@ const AskQuestion = () => {
                         <label htmlFor="ask-ques-title">
                             <h4>Title</h4>
                             <p>Be specific and imagine you'r asking a question to another person</p>
-                            <input type="text" name="questionTitle" onChange={handleChange} id='ask-ques-title' placeholder='e.g. is there an r function for finding the index of an element in a vector' />
+                            <input type="text" name="questionTitle" onChange={handleChange} id='ask-ques-title' placeholder='e.g. is there an r function for finding the index of an element in a vector' required />
                         </label>
                         <label htmlFor="ask-ques-body">
                             <h4>Body</h4>
                             <p>Include all the information someone would need to answer your question</p>
-                            <textarea type="text" name='questionBody' onChange={handleChange} id='ask-ques-body ' onKeyPress={handleEnter} cols="30" rows="10" />
+                            <textarea type="text" name='questionBody' onChange={handleChange} id='ask-ques-body ' onKeyPress={handleEnter} cols="30" rows="10" required />
                         </label>
                         <label htmlFor="ask-ques-tags">
                             <h4>Tags</h4>

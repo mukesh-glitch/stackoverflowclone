@@ -15,27 +15,27 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     let user = useSelector((state) => (state.currentUserReducer));
-    console.log(user)
 
-    useEffect(() => {
-        const token = user?.token
 
-        if (token) {
-            const decodeToken = decode(token)
-            console.log(new Date().getTime())
-            console.log(decodeToken.exp * 1000)
-            if (decodeToken.exp * 1000 < new Date().getTime()) {
-                handleLogout()
-            }
-        }
-        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
-    }, [dispatch])
 
     const handleLogout = () => {
         dispatch({ type: 'LOGOUT' })
         navigate('/')
         dispatch(setCurrentUser(null))
     }
+
+    useEffect(() => {
+        const token = user?.token
+        if (token) {
+            const decodeToken = decode(token)
+            if (decodeToken.exp * 1000 < new Date().getTime()) {
+                handleLogout()
+            }
+        }
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('profile'))))
+    }, [user?.token, dispatch])
+
+
     // const handleLogout =()
     return (
         <div className="potion-nav">
@@ -61,7 +61,7 @@ const Navbar = () => {
                     {
                         user === null ? <div><Link to='/Auth' className='nav-auth-btn auth-login'> Log in</Link> <Link to='/auth' className='nav-auth-btn auth-signup' > Sign up</Link> </div> :
                             <>
-                                <Link to='/'> <Avatar borderRadius="50%" backgroundColor="blue" px="10px" py="7px" color="white">{user.result.name.charAt(0).toUpperCase()}</Avatar></Link>
+                                <Link to={`/Users/${user.result._id}`}> <Avatar borderRadius="50%" backgroundColor="blue" px="10px" py="7px" color="white">{user.result.name.charAt(0).toUpperCase()}</Avatar></Link>
                                 <button className='nav-auth-btn auth-logout' onClick={handleLogout}>Log out</button>
                             </>
 

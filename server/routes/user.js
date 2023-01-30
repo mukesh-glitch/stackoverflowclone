@@ -1,6 +1,7 @@
 import Express from "express";
 import { signup, login } from "../controller/auth.js"
-import { getAllUsers } from "../controller/user.js";
+import { getAllUsers, UpdateProfile } from "../controller/user.js";
+import auth from "../middleware/auth.js";
 const router = Express.Router();
 
 router.get('/', (req, res) => {
@@ -13,5 +14,6 @@ router.post('/user/signup', signup)
 router.post('/user/login', login)
 
 router.get('/user/getAllUsers', getAllUsers)
+router.patch('/user/update/:id', auth, UpdateProfile)
 
 export default router;

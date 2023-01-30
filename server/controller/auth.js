@@ -24,8 +24,8 @@ export const signup = async (req, res) => {
             }
         );
         newUser.password = " "
-        console.log(newUser)
-        const token = jwt.sign({ email: newUser.email, id: newUser._id }, "test", { expiresIn: "1h" })
+        // console.log(newUser)
+        const token = jwt.sign({ email: newUser.email, id: newUser._id }, process.env.JWT_KEY, { expiresIn: "1hr" })
         res.status(200).json({ result: newUser, token: token })
     } catch (error) {
         res.status(500).json(" someting went wrong")
@@ -37,7 +37,7 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
 
     const { email, password } = req.body;
-    console.log(req.body)
+    // console.log(req.body)
     try {
         const isUserExit = await userdb.findOne({ email })
         if (!isUserExit) {
@@ -50,7 +50,7 @@ export const login = async (req, res) => {
         }
         isUserExit.password = " "
         console.log(isUserExit)
-        const token = jwt.sign({ email: isUserExit.email, id: isUserExit._id }, "test", { expiresIn: "1h" })
+        const token = jwt.sign({ email: isUserExit.email, id: isUserExit._id }, process.env.JWT_KEY, { expiresIn: "1hr" })
         res.status(200).json({ result: isUserExit, token: token })
     } catch (error) {
         res.status(500).json(" someting went wrong")

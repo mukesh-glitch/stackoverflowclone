@@ -58,8 +58,6 @@ export const postAnswerAction = (answer) => async (dispatch) => {
     } catch (error) {
         console.log(error)
     }
-
-
 }
 
 export const deleteAnswerAction = (id, noOfAnswer, answerId) => async (dispatch) => {
